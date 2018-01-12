@@ -125,3 +125,4 @@ if __name__ == '__main__':
     choices = choices_words(c_filePath,options)
     #将题目提交到www.baidu.com,统计返回数据中的选项词频
     count_base(question, choices)
+    webbrowser.open('https://baidu.com/s?wd=' + urllib.parse.quote(question))
