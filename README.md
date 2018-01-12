@@ -5,7 +5,7 @@
 1.环境安装 adb、python 、pip install 相关包<br>
 2.注册百度OCRapi或者Face++的OCRApi <br>
 3.根据自己手机（目前仅限安卓）的分辨率，调整image_cut()中的参数，可以用cut_images-size.py来慢慢调整。<br>
-   区域由一个4元组定义，表示为坐标是 (x0, y0, x1, x2)。（x0,y0）为起点坐标，（x1,y2）为重点点坐标。<br>
+   区域由一个4元组定义，表示为坐标是 (x0, y0, x1, x2)。（x0,y0）为起点坐标，（x1,y2）为终点点坐标。<br>
 4.在百度OCR_api定义常量APP_ID 、API_KEY 、SECRET_KE换上你的账号信息，在你注册的平台上的控制台上可以查看<br>
 5.安卓手机开启调试模式，USB连接电脑<br>
 6. python answer_the_question.py 使用<br>
