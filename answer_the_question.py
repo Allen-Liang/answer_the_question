@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import webbrowser
 import urllib.parse
 
-
+start = time.time()
 # 百度OCR_api定义常量 
 # 在这里输入你的信息 
 APP_ID = ''  
@@ -126,3 +126,5 @@ if __name__ == '__main__':
     #将题目提交到www.baidu.com,统计返回数据中的选项词频
     count_base(question, choices)
     webbrowser.open('https://baidu.com/s?wd=' + urllib.parse.quote(question))
+    end = time.time()
+    print('程序用时：' + str(end - start) + '秒')
