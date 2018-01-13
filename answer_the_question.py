@@ -102,7 +102,7 @@ def count_base(question,choices):
     counts = []
     print('问题: '+question)
     print('————————————————————————————————————')
-    if '不是' in question:
+    if '不' in question:
         print('请注意此题为否定题,选计数最少-最少-最少-最少-最少-的')
         print('—————————————————————————————————————')
     else:
