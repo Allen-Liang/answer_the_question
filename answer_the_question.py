@@ -125,6 +125,9 @@ if __name__ == '__main__':
     choices = choices_words(c_filePath,options)
     #将题目提交到www.baidu.com,统计返回数据中的选项词频
     count_base(question, choices)
-    webbrowser.open('https://baidu.com/s?wd=' + urllib.parse.quote(question))
+    count_base(question, choices)
+    count_base(question, choices)    
+    #选择是否打开浏览器    
+    #webbrowser.open('https://baidu.com/s?wd=' + urllib.parse.quote(question))
     end = time.time()
     print('程序用时：' + str(end - start) + '秒')
