@@ -118,7 +118,7 @@ def count_base(question,choices):
     print(Fore.YELLOW +'-----------------欢迎你使用卖假货学长的小助手---------------------------'+ Fore.RESET)
     print('问题: '+question)
     #print('———————————————————————————')
-    if '不是' in question or '不能' in question or '不属于' in question  or '不可以' in question:
+    if '不是' in question or '不能' in question or '不属于' in question  or '不可以' in question or '不包括' in question:
         print('——————————————————————————')
         for i in range(len(choices)):
             counts.append(content.count(choices[i]))
