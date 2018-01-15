@@ -16,13 +16,16 @@ import urllib.parse
 from colorama import init,Fore
 init()
 
-# 输入你的api配置信息
-# 百度OCR_api定义常量  
+
+# 百度OCR_api定义常量
+# 输入你的API信息  
 APP_ID = ''  
 API_KEY = ''  
 SECRET_KEY = ''  
-# 初始化AipFace对象  
 aipOcr = AipOcr(APP_ID, API_KEY, SECRET_KEY)  
+
+
+
 # 定义参数变量  
 options = {  
   'detect_direction': 'true',  
@@ -34,17 +37,43 @@ def pull_screenshot():
     os.system('adb shell screencap -p /sdcard/screenshot.png')
     os.system('adb pull /sdcard/screenshot.png .')
 
-#图片切割
-def image_cut():
+# 根据你的手机配置屏幕截图信息，我的测试手机是meizu_pro6s,配置如下
+# 冲顶大会图片切割
+def image_cut_chongding():
     img = Image.open("./screenshot.png")
     #区域由一个4元组定义，表示为坐标是 (x0, y0, x1, x2)
-    # 自己根据自己的手机尺寸配置
     #问题区域
-    question  = img.crop((26, 136, 452,315))
+    question  = img.crop((38, 316, 1032,640))
     question.save('question.png')
     #选线区域
-    choices = img.crop((26, 291, 445, 620))
+    choices = img.crop((38, 640, 1032, 1226))
     choices.save('choices.png')
+
+
+#西瓜视频图片切割
+def image_cut_xigua():
+    img = Image.open("./screenshot.png")
+    #区域由一个4元组定义，表示为坐标是 (x0, y0, x1, x2)
+    #问题区域
+    question  = img.crop((38, 300, 1017,624))
+    question.save('question.png')
+    #选线区域
+    choices = img.crop((38, 624, 1017, 1257))
+    choices.save('choices.png')
+
+
+#芝士超人图片切割
+def image_cut_zhishi():
+    img = Image.open("./screenshot.png")
+    #区域由一个4元组定义，表示为坐标是 (x0, y0, x1, x2)
+    #问题区域
+    question  = img.crop((21, 285, 1056,570))
+    question.save('question.png')
+    #选线区域
+    choices = img.crop((21, 578, 1063, 1172))
+    choices.save('choices.png')
+
+
 
 # 读取问题图片  
 def get_file_content(q_filePath):  
@@ -88,9 +117,9 @@ def count_base(question,choices):
     dic = {}
     print(Fore.YELLOW +'-----------------欢迎你使用卖假货学长的小助手---------------------------'+ Fore.RESET)
     print('问题: '+question)
-    print('————————————————————————————————————')
-    if '不' in question:
-        print('————————————————————————————————————')
+    #print('———————————————————————————')
+    if '不是' in question or '不能' in question or '不属于' in question  or '不可以' in question:
+        print('——————————————————————————')
         for i in range(len(choices)):
             counts.append(content.count(choices[i]))
             dic[choices[i]] = counts[i]
@@ -99,10 +128,10 @@ def count_base(question,choices):
             if dic[max(dic, key=dic.get)] != dic[min(dic, key=dic.get)]:
                 print()
                 print('请注意此题为否定题，建议选择：', Fore.RED + min(dic, key=dic.get) + Fore.RESET)
-                print()
+                #print()
     
     else:
-        print('————————————————————————————————————')
+        print('——————————————————————————')
         for i in range(len(choices)):
             counts.append(content.count(choices[i]))
             dic[choices[i]] = counts[i]
@@ -111,13 +140,14 @@ def count_base(question,choices):
             if dic[max(dic, key=dic.get)] != 0:
                 print()
                 print('请注意此题为肯定题，建议选择：', Fore.RED + max(dic, key=dic.get) + Fore.RESET)
-                print()
+                #print()
 
 
-if __name__ == '__main__':
+def game_fun(image_cut):
     while True:
         start = time.time()
         pull_screenshot()
+        #截图参数
         image_cut()
         q_filePath = "question.png"
         c_filePath = "choices.png"
@@ -127,6 +157,8 @@ if __name__ == '__main__':
         count_base(question, choices)
         count_base(question, choices)
         count_base(question, choices)
+        count_base(question, choices)
+        
         #webbrowser.open('https://baidu.com/s?wd=' + urllib.parse.quote(question))
         end = time.time()
         print(Fore.YELLOW +'++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'+ Fore.RESET)
@@ -136,3 +168,18 @@ if __name__ == '__main__':
         go = input(Fore.RED +'输入回车继续运行,输入 n 回车结束运行: '+ Fore.RESET)
         if go == 'n':
             break
+
+
+if __name__ == '__main__':
+    init()
+    print('请输入你要运行的助手对应的数字，并按回车键运行')
+    print('冲顶大会：1')
+    print('西瓜视频：2')
+    print('芝士超人：3')
+    go_to = input('请输入你要运行的助手对应的数字，并按回车键运行: ')
+    if go_to == '1':
+        game_fun(image_cut_chongding)
+    elif go_to == '2':
+        game_fun(image_cut_xigua)
+    elif go_to == '3':
+        game_fun(image_cut_zhishi)

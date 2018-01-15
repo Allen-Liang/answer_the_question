@@ -10,6 +10,9 @@
 5.安卓手机开启调试模式，USB连接电脑<br>
 6. python answer_the_question.py 使用<br>
 7.参考了这位[大牛](https://github.com/Skyexu/TopSup)的部分代码,感谢！<br>
+![](https://github.com/Allen-Liang/answer_the_question/raw/master/example_images/zuixin.JPG)<br>
+![](https://github.com/Allen-Liang/answer_the_question/raw/master/example_images/1.jpg)<br>
+![](https://github.com/Allen-Liang/answer_the_question/raw/master/example_images/2.jpg)<br>
 ![](https://github.com/Allen-Liang/answer_the_question/raw/master/example_images/one.jpg)<br>
 ![](https://github.com/Allen-Liang/answer_the_question/raw/master/example_images/two.jpg)<br>
 ![](https://github.com/Allen-Liang/answer_the_question/raw/master/example_images/three.JPG)<br>
