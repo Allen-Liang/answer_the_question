@@ -168,7 +168,7 @@ def game_fun(image_cut):
         go = input(Fore.RED +'输入回车继续运行,输入 n 回车结束运行: '+ Fore.RESET)
         if go == 'n':
             break
-
+# 组合
 
 if __name__ == '__main__':
     init()
